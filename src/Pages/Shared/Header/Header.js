@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Nav, Navbar, } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import logo from '../../../images/logo.png';
+// import logo from '../../../images/logo.png';
 
 const Header = () => {
     return (
@@ -9,7 +9,7 @@ const Header = () => {
             <Navbar sticky='top' collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
                <Navbar.Brand as = {Link} to ="/">
-                    <img src= {logo} alt="header-logo" />
+                    {/* <img src= {logo} alt="header-logo" /> */}
                </Navbar.Brand>
              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
              <Navbar.Collapse id="responsive-navbar-nav">
