@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useState } from 'react';
+import Social from '../Social/Social';
 
 const Register = () => {
     const [email,setEmail] = useState('');
@@ -11,9 +12,7 @@ const Register = () => {
     const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
-        user,
-        loading,
-        error,
+        user
       ] = useCreateUserWithEmailAndPassword(auth);
 
       const handleEmailField = event => {
@@ -56,6 +55,7 @@ const Register = () => {
                 </div>
                 <button type="submit" className="btn btn-primary w-100">Register</button>
             </form>
+            <Social></Social>
             <p className='mt-5 text-danger h6 text-center'>{passwordError}</p>
             <p className='my-3 text-center'> Already Have an Account?? <Link to='/login' className='text-danger text-decoration-none h6'>Please Login</Link></p>
         </div>

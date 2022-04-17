@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Social from '../Social/Social';
 
 const Login = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const [
         signInWithEmailAndPassword,
         user,
-        loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
 
@@ -26,7 +28,7 @@ const Login = () => {
         signInWithEmailAndPassword(email,password);
     }
     if(user){
-        navigate('/');
+        navigate(from,{replace: true});
     }
 
     return (
@@ -40,6 +42,7 @@ const Login = () => {
                    <input onBlur={handlePasswordField} type="password" className="form-control" id="exampleInputPassword1" placeholder='Enter Your Password' required/>
                 </div>
                 <button type="submit" className="btn btn-primary w-100">Login</button>
+                <Social></Social>
                 <p className='text-danger text-center h6 mt-3'>{error?.message}</p>
                 <p className='my-3'>New to Basic Photography?? <Link to='/register' className='text-danger text-decoration-none h6'>Please Register</Link></p>
             </form>
