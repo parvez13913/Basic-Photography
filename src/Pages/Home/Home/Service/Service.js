@@ -9,7 +9,7 @@ const Service = ({service}) => {
     }
     const {name,picture,reviews} = service;
     return (
-        <div className=' d-grid col-sm-12 col-md-6 col-lg-4'>
+        <div className='d-grid col-sm-12 col-md-6 col-lg-4'>
             <Card>
               <Card.Img variant="top" src= {picture} />
               <Card.Body>
