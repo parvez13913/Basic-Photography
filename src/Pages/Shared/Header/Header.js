@@ -18,13 +18,14 @@ const Header = () => {
             <Navbar sticky='top' collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
                <Navbar.Brand as = {Link} to ="/">
-                    {/* <img src= {logo} alt="header-logo" /> */}
+                    <h4 className='text-secondary font-'>Basic PhotoGraphy</h4>
                </Navbar.Brand>
              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
              <Navbar.Collapse id="responsive-navbar-nav">
              <Nav className="me-auto">
                <Nav.Link as = {Link} to ="/home">Home</Nav.Link>
                <Nav.Link as = {Link} to ="/checkout">Check Out</Nav.Link>
+               <Nav.Link as = {Link} to ="/blog">Blog</Nav.Link>
              </Nav>
              <Nav>
                 {

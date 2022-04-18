@@ -7,7 +7,7 @@ const Service = ({service}) => {
     const handelBookButton = () => {
         navigate('/checkout');
     }
-    const {name,picture,reviews} = service;
+    const {name,picture,reviews,price} = service;
     return (
         <div className='d-grid col-sm-12 col-md-6 col-lg-4'>
             <Card>
@@ -16,6 +16,9 @@ const Service = ({service}) => {
                   <Card.Title>{name}</Card.Title>
                   <Card.Text>
                     {reviews}
+                   </Card.Text>
+                  <Card.Text>
+                    price: $ {price}
                    </Card.Text>
               </Card.Body>
               <Button onClick={handelBookButton} className='w-100' variant="primary">Book Now</Button>
