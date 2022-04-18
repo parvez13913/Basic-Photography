@@ -2,7 +2,14 @@
 
 This project is Developed By React With Bootstrap CSS Framework and vanilla CSS [BASIC PHOTOGRAPHER](https://basic-photography.web.app/login).
 
-* 
+* This project is Developed By React
+* This Project Uses Bootstrap Vanilla CSS And JavaScript
+* This project is hosted on Firebase
+* React toastify has been used in this project
+* React router has been used in this project
+* React Firebase Hooks has been used in this project
+* This is a photography service website
+* You can take our service for photography of any kind of event
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
