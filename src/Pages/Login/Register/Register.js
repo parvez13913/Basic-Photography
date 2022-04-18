@@ -1,8 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSendEmailVerification } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { useState } from 'react';
 import Social from '../Social/Social';
+import Loading from '../Loading/Loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Register = () => {
     const [email,setEmail] = useState('');
@@ -12,7 +15,9 @@ const Register = () => {
     const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
-        user
+        user,
+        error,
+        loading
       ] = useCreateUserWithEmailAndPassword(auth);
 
       const handleEmailField = event => {
@@ -28,14 +33,29 @@ const Register = () => {
       if(user){
           navigate('/checkout')
       }
+      let loadingElement;
+      if(loading){
+        loadingElement = <p className='text-center mt-2'>
+                <Loading></Loading>
+        </p>
+      }
 
-    const handelRegister = event => {
+      let errorElement;
+      if(error){
+        errorElement = <p className='text-center text-danger mt-3'>{error.massage}</p>
+      }
+
+      const [sendEmailVerification] = useSendEmailVerification(auth);
+
+    const handelRegister = async event => {
         event.preventDefault();
         if(password !== confirmPassword) {
             setPasswordError('Password Did Not Match');
                 return;
         }
         createUserWithEmailAndPassword(email,password);
+        await sendEmailVerification(email);
+        toast('Sent Email')
     }
     return (
         <div className='container w-50 border border-light mt-5 p-3 rounded bg-light.bg-gradient shadow-lg'>
@@ -55,9 +75,12 @@ const Register = () => {
                 </div>
                 <button type="submit" className="btn btn-primary w-100">Register</button>
             </form>
+            {loadingElement}
             <Social></Social>
             <p className='mt-5 text-danger h6 text-center'>{passwordError}</p>
+            {errorElement}
             <p className='my-3 text-center'> Already Have an Account?? <Link to='/login' className='text-danger text-decoration-none h6'>Please Login</Link></p>
+            <ToastContainer/>
         </div>
     );
 };
