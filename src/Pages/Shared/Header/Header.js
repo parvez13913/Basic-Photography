@@ -24,13 +24,13 @@ const Header = () => {
              <Navbar.Collapse id="responsive-navbar-nav">
              <Nav className="me-auto">
                <Nav.Link as = {Link} to ="/home">Home</Nav.Link>
-               <Nav.Link as = {Link} to ="/about">About</Nav.Link>
                <Nav.Link as = {Link} to ="/checkout">Check Out</Nav.Link>
              </Nav>
              <Nav>
                 {
-                  user? <p className='pointer text-secondary' onClick={handelLogout}>Logout</p> : <Nav.Link as = {Link} to ="/login">Login</Nav.Link>
+                  user? <p className='pointer text-secondary m-2' onClick={handelLogout}>Logout</p> : <Nav.Link as = {Link} to ="/login">Login</Nav.Link>
                 }
+                <Nav.Link as = {Link} to ="/about">About</Nav.Link>
              </Nav>
            </Navbar.Collapse>
        </Container>
